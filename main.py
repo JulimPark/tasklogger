@@ -78,6 +78,8 @@ if st.session_state.logged_in == True:
             }).execute()
             st.success('입력되었습니다.')
             time.sleep(2)
+            st.rerun()
+            
     with st.expander(label='업무기록확인',):
         df = data_load()
         for i,var in enumerate(df):
