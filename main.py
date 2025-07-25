@@ -1,7 +1,7 @@
 import streamlit as st
 from supabase import create_client
 import os,time
-import dotenv
+# import dotenv
 import ast
 st.set_page_config(page_title="KIOT 업무일지 기록", page_icon=':balloon',layout='centered')
 
