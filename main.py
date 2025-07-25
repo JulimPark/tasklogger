@@ -70,15 +70,18 @@ if st.session_state.logged_in == True:
         with cols[1]:
             oklog = st.form_submit_button(label='기록',use_container_width=True)
         if oklog:
-            res = supabase.table('taskLOG').insert({
-                'name': st.session_state.username,
-                'tasklog':tasklog,
-                'date': f"{date.year}/{format(date.month,'02')}/{format(date.day,'02')}",
-                'etc':fileLocation
-            }).execute()
-            st.success('입력되었습니다.')
-            time.sleep(2)
-            st.rerun()
+            if tasklog=="":
+                st.info("업무내용은 필수로 입력해야 합니다")
+            else:
+                res = supabase.table('taskLOG').insert({
+                    'name': st.session_state.username,
+                    'tasklog':tasklog,
+                    'date': f"{date.year}/{format(date.month,'02')}/{format(date.day,'02')}",
+                    'etc':fileLocation
+                }).execute()
+                st.success('입력되었습니다.')
+                time.sleep(2)
+                st.rerun()
             
     with st.expander(label='업무기록확인',):
         df = data_load()
