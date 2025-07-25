@@ -18,8 +18,8 @@ SUPA_KEY = st.secrets['SUPA_KEY']
 
 members = st.secrets['MEMBERS']
 passset = st.secrets['PASSSETS']
-members = ast.literal_eval(members)
-passset = ast.literal_eval(passset)
+# members = ast.literal_eval(members)
+# passset = ast.literal_eval(passset)
 
 
 @st.cache_resource
