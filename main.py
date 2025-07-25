@@ -72,6 +72,8 @@ if st.session_state.logged_in == True:
         if oklog:
             if tasklog=="":
                 st.info("업무내용은 필수로 입력해야 합니다")
+                time.sleep(2)
+                st.rerun()
             else:
                 res = supabase.table('taskLOG').insert({
                     'name': st.session_state.username,
