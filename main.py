@@ -47,9 +47,11 @@ if st.session_state.logged_in == False:
 
     with st.form('로그인'):
         st.subheader(':blue[KIOT 빅데이터팀] 업무일지')
-        name = st.text_input('ID')
-        password = st.text_input('Password',type='password')
-        loginbtn = st.form_submit_button(label='Login')
+        cols = st.columns(3)
+        with cols[1]:
+            name = st.text_input('ID')
+            password = st.text_input('Password',type='password')
+            loginbtn = st.form_submit_button(label='Login')
 
     if loginbtn:
         if name in members:
