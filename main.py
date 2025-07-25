@@ -12,7 +12,7 @@ st.set_page_config(page_title="KIOT 업무일지 기록", page_icon=':balloon',l
 # members = os. getenv('MEMBERS')
 # passset = os.getenv('PASSSETS')
 
-'''배포용'''
+# 배포용
 SUPA_URL = st.secrets['SUPA_URL']
 SUPA_KEY = st.secrets['SUPA_KEY']
 
