@@ -5,12 +5,19 @@ import dotenv
 import ast
 st.set_page_config(page_title="KIOT 업무일지 기록", page_icon=':balloon',layout='centered')
 
-dotenv.load_dotenv()
-SUPA_URL = os.getenv('SUPA_URL')
-SUPA_KEY = os.getenv('SUPA_KEY')
+# dotenv.load_dotenv()
+# SUPA_URL = os.getenv('SUPA_URL')
+# SUPA_KEY = os.getenv('SUPA_KEY')
 
-members = os. getenv('MEMBERS')
-passset = os.getenv('PASSSETS')
+# members = os. getenv('MEMBERS')
+# passset = os.getenv('PASSSETS')
+
+'''배포용'''
+SUPA_URL = st.secrets['SUPA_URL']
+SUPA_KEY = st.secrets['SUPA_KEY']
+
+members = st.secrets['MEMBERS']
+passset = st.secrets['PASSSETS']
 members = ast.literal_eval(members)
 passset = ast.literal_eval(passset)
 
