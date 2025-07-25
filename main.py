@@ -28,8 +28,12 @@ def init_connection():
     key = SUPA_KEY
     return create_client(url, key)
 
-def data_load():
-    response = supabase.table('taskLOG').select('*').match({'name':st.session_state.username}).execute()
+def data_load(user:str=None):
+    if user==None:
+        response = supabase.table('taskLOG').select('*').match({'name':st.session_state.username}).execute()
+    else:
+        response = supabase.table('taskLOG').select('*').execute()
+        
     return response.data
 
 supabase = init_connection()
@@ -86,7 +90,10 @@ if st.session_state.logged_in == True:
                 st.rerun()
             
     with st.expander(label='업무기록확인',):
-        df = data_load()
+        if st.session_state.username == '박주림':
+            df = data_load(user=st.session_state.username)
+        else:
+            df = data_load()
         for i,var in enumerate(df):
             df[i].pop('created_at')
         df = sorted(df, key=lambda x: x['date'],reverse=True)
